@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Flow-Focus</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div id="app">
+  <div class="shell">
+    <aside>
+      <div class="brand"><div class="logo">⌁</div><span class="brand-name">Flow-Focus</span></div>
+      <div style="width:100%">
+        <div class="nav-label">Workspace</div>
+        <nav class="nav" aria-label="Main navigation">
+          <button class="active" data-view="focus"><span class="nav-icon">◉</span><span class="nav-text">Focus room</span></button>
+          <button data-view="apps"><span class="nav-icon">▦</span><span class="nav-text">My blocked apps</span></button>
+          <button data-view="stats"><span class="nav-icon">▥</span><span class="nav-text">Statistics</span></button>
+        </nav>
+      </div>
+      <div class="sidebar-bottom">
+        <div class="mini-title">Your weekly goal</div>
+        <p>You're building a better focus habit. Keep the streak alive.</p>
+        <div class="progress"><span id="goalProgress"></span></div>
+        <p style="margin-bottom:0;margin-top:8px"><strong id="goalText" style="color:#dce8d6">3h 10m</strong> of 5 hours</p>
+      </div>
+    </aside>
+    <main>
+      <div class="topbar">
+        <div class="eyebrow">Your space to do more with less distraction.</div>
+        <div class="top-right"><div class="pill"><span class="dot"></span><span id="statusText">Ready to focus</span></div><div class="avatar">D</div></div>
+      </div>
+      <div class="headline">
+        <div><h1 id="pageTitle">Make time for what matters.</h1><p class="subhead" id="pageSub">One session at a time. Your attention is yours to protect.</p></div>
+        <div class="date" id="todayDate">YOUR FOCUS SPACE</div>
+      </div>
+      <section class="stats" aria-label="Focus statistics">
+        <div class="stat"><div class="stat-label">◷ &nbsp; Focus time today</div><div class="stat-value" id="todayStat">0m</div><div class="stat-foot" id="todayFoot">Start your first session</div></div>
+        <div class="stat"><div class="stat-label">✓ &nbsp; Sessions completed</div><div class="stat-value" id="sessionsStat">0</div><div class="stat-foot muted">Every minute counts</div></div>
+        <div class="stat"><div class="stat-label">♨ &nbsp; Current streak</div><div class="stat-value" id="streakStat">0 days</div><div class="stat-foot" id="streakFoot">Start a streak today</div></div>
+      </section>
+      <section class="workspace" id="mainWorkspace">
+        <div class="panel focus-panel" id="focusPanel">
+          <div class="panel-head"><h2>Focus session</h2><span class="small-muted" id="sessionTag">READY WHEN YOU ARE</span></div>
+          <div class="mode-row">
+            <div class="mode-copy"><div class="shield">♧</div><div><strong>Strict Mode</strong><small id="strictDescription">Stay on track during your session</small></div></div>
+            <button class="switch" id="strictSwitch" aria-label="Toggle Strict Mode" aria-pressed="true"><span></span></button>
+          </div>
+          <div class="timer-wrap"><div class="timer" id="timerRing"><div class="timer-inner"><div class="timer-lock" id="timerLock">♧</div><div class="time" id="timerText">25:00</div><div class="timer-label" id="timerLabel">MINUTES OF FOCUS</div></div></div></div>
+          <div class="duration-row" id="durationRow"><button class="duration selected" data-minutes="25">25 min</button><button class="duration" data-minutes="45">45 min</button><button class="duration" data-minutes="60">60 min</button><button class="duration" data-minutes="90">90 min</button></div>
+          <button class="primary-btn" id="startBtn">↗ &nbsp; Start focus session</button>
+        </div>
+        <div class="panel apps-panel" id="appsPanel">
+          <div class="panel-head"><h2>Choose apps to block</h2><span class="small-muted" id="selectedCount">3 SELECTED</span></div>
+          <div class="app-help">Select the apps that tend to pull you away from what matters.</div>
+          <div class="app-list" id="appList"></div>
+          <div class="safe-note"><span>ⓘ</span><span><b>Essential apps stay available.</b> Calls and emergency access are always kept out of the block list in this prototype.</span></div>
+        </div>
+      </section>
+      <section class="bottom-grid" id="bottomGrid">
+        <div class="panel week-panel">
+          <div class="week-title"><h2>Your focus activity</h2><span class="small-muted">LAST 7 DAYS</span></div>
+          <div class="week-bars" id="weekBars"></div>
+          <div class="week-summary"><div><span>This week</span><strong id="weekTotal">3h 10m</strong></div><div><span>Daily average</span><strong id="weekAverage">27 min</strong></div><div><span>Weekly goal</span><strong id="weekGoal">63%</strong></div></div>
+        </div>
+        <div class="panel history-panel"><h2>Recent sessions</h2><div id="historyList"></div></div>
+      </section>
+    </main>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<div class="modal-backdrop" id="blockedModal" role="dialog" aria-modal="true" aria-labelledby="blockedTitle">
+  <div class="modal"><div class="modal-symbol">🔒</div><h2 id="blockedTitle">Stay in your focus zone.</h2><p id="blockedMessage">This app is on your block list. Keep going — your future self will thank you.</p><button class="primary-btn" id="backToFocus">Back to focus</button><button class="secondary-btn" id="endFromModal">End session (prototype)</button></div>
+</div>
+<script src="script.js" defer></script>
+</body>
+</html>
